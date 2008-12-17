@@ -1,0 +1,15 @@
+﻿7.10.2008 Sascha Ohms
+	* Angeblich überflüssiges "/" wieder eingesetzt und mit einer Abfrage versehen
+
+25.08.2008 Sascha Ohms
+	* Überflüssigen "/" aus der URL entfernt
+	* Option, um Zufallsnamen an- / ausschalten zu können
+
+25.08.2008 mit der Hilfe von Jörg Napp <www.joergnapp.de>
+	* Uploadmöglichkeit von PHP und anderen Dateien unterbunden
+	* Unerlaubte Erstellung von Clickfiles unterbunden
+
+
+18.08.2008 Sascha Bartuweit <ir0n1e@freenet.de>
+	* 16:9 prüfung eingefügt 
+	* prüfung ob bild kleiner ist als thumb 'thunmb_size' variablen geändert
