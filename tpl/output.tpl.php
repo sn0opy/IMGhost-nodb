@@ -1,4 +1,4 @@
-<img src="<?=$thumbausgabe?>" alt="" class="Tips2" id="vorschau" title="Informationen :: Name: <?=$imgname?><br/>Typ: <?=$typeausgabe?><br/>Gr&ouml;&szlig;e: <?=$size?> kb"/>
+<img src="<?=$thumbausgabe?>" alt="" class="Tips2" id="vorschau" title="Informationen :: Name: <?=$thename?><br/>Typ: <?=$typeausgabe?><br/>Gr&ouml;&szlig;e: <?=$size?> kb"/>
 
 
 <table>
@@ -36,11 +36,15 @@
 		<td><input type='text' value='<?=$htmlcodeausgabethumb?>' size='70' onClick="this.select();" /></td>
 	</tr>	
 	<tr>
-		<td colspan="2"><h3>Klickcounter</h3></td>
+		<td colspan="2"><h3>Sonstiges</h3></td>
 	</tr>
 	<tr>
-		<td>Voll: </td>
+		<td>Clickcounter: </td>
 		<td><input type='text' value='<?=$fullausgabeclick?>' size='70' onClick="this.select();" /></td>
+	</tr>
+	<tr>
+		<td>Twittern: </td>
+		<td><a href="<?=$twitterausgabe?>">Hier klicken (twitter.com)</a></td>
 	</tr>
 </table>
 

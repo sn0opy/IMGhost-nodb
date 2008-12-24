@@ -1,41 +1,19 @@
 <?
-#####################################################################
-#
-#					  		  IMGhost
-#				     		Erstellt von Sascha Ohms
-#
-#	--- MAIN
-#	IMGhost ist ein sehr einfaches, kleines Upload-Script für
-#	Bilder, geschrieben in PHP und benötigt kein mySQL.
-#
-#	--- INSTALLATION
-#	Die Installation ist mit einem einfachen Upload und dem setzen
-#	der Rechte vom Ordner "clicks " und "img" auf 777 bereits getan.
-#
-#	--- LIZENZ
-#	Das Script steht unter der Creative Commons Lizenz. Weitere
-#	Infos gibt es unter http://somegas.de/wordpress/projekte/imghost
-#
-#####################################################################
-#
-#	--- SETTINGS
-#
-	$globvar = array();
-	$globvar['title'] = 'IMGhost'; 
-	$globvar['2ndtitle'] = 'An image hosting script';
-	$globvar['imagesupport'] = 'jpg, png, gif';
-	$globvar['maxsize'] = '1024'; // Angabe in Kilobyte
-	$globvar['thumbwidth43'] = 180;  	/* neu resize */
-	$globvar['thumbheight43'] = 135; 	/* für 16/9  */
-	$globvar['thumbwidth169'] = 240; 	/* und 4/3 	*/
-	$globvar['thumbheight169'] = 135; 
-	$globvar['visiblecopyright'] = '<a href="http://www.somegas.de">Sascha Ohms</a>';
-	$globvar['language'] = 'DE';
-	$globvar['metadescription'] = 'Ein kostenloser Image-Hoster. Zeige deine Bilder, Freunden, in Foren oder irgendwo im Internet.';
-	$globvar['use_randomname'] = true; // Zufallsname oder alten Dateinamen übernehmen
-#
-#
-#####################################################################
+error_reporting(0);
+$globvar = array();
+$globvar['title'] = 'IMGhost'; 
+$globvar['2ndtitle'] = 'Host you images';
+$globvar['imagesupport'] = 'jpg, png, gif';
+$globvar['maxsize'] = '1536'; // Angabe in Kilobyte
+$globvar['thumbwidth43'] = 180;  	/* neu resize */
+$globvar['thumbheight43'] = 135; 	/* für 16/9  */
+$globvar['thumbwidth169'] = 240; 	/* und 4/3 	*/
+$globvar['thumbheight169'] = 135; 
+$globvar['visiblecopyright'] = '<a href="http://www.somegas.de">Sascha Ohms</a>';
+$globvar['language'] = 'DE';
+$globvar['metadescription'] = 'Ein kostenloser Image-Hoster. Zeige deine Bilder, Freunden, in Foren oder irgendwo im Internet.';
+$globvar['use_randomname'] = true; // Zufallsname oder alten Dateinamen übernehmen
+
 ob_start();
 include('tpl/header.tpl.php');
 
@@ -68,6 +46,7 @@ if(isset($_GET['s'])) {
 		$tempname = $_FILES['nfile']['tmp_name']; 
 		$type = $_FILES['nfile']['type'];		
 		$thename = $_FILES['nfile']['name'];
+		
 		$endung = substr($thename, -4);
 		
 		if($globvar['use_randomname'] == true)
@@ -140,6 +119,12 @@ if(isset($_GET['s'])) {
 				$serverurl = $_SERVER['HTTP_HOST'].dirname($_SERVER['REQUEST_URI']);
 			else
 				$serverurl = $_SERVER['HTTP_HOST'].dirname($_SERVER['REQUEST_URI'])."/";
+			
+			$isgdlink = isgd('http://' .$serverurl. 'i/' .$name);
+			if($isgdlink != "error")
+				$twitterausgabe = 'http://twitter.com/home?status=' .$isgdlink. ' - ' .$thename;
+			else
+				$twitterausgabe = 'http://twitter.com/home/?status=http://' .$serverurl. 'i/' .$name;
 
 				
 			$htmlcodeausgabe = '<img src="http://' .$serverurl. 'i/' .$name. '" alt="" />';
@@ -148,8 +133,8 @@ if(isset($_GET['s'])) {
 			$thumbausgabe = 'http://' .$serverurl. 'i/t/' .$name;	
 			$htmlcodeausgabethumb = '<a href="http://' .$serverurl. 'i/' .$name. '" target="_blank"><img src="http://' .$serverurl. 'i/t/' .$name. '" alt="" /></a>';
 			$bbcodeausgabethumb = '[url=http://' .$serverurl. 'i/' .$name. '][img]http://' .$serverurl. 'i/t/' .$name. '[/img][/url]';
-			$fullausgabeclick = 'http://' .$serverurl. '/?s=' .$name;
-			
+			$fullausgabeclick = 'http://' .$serverurl. '?s=' .$name;
+
 			include('tpl/output.tpl.php');
 		}
 	}
@@ -161,4 +146,21 @@ function is_valid_filename($filename, $extensions=array('jpg', 'jpeg', 'gif', 'p
     return preg_match($regex, $filename);
 }
 
+function isgd($link) {
+        $fp = fsockopen("www.is.gd", 80, $errno, $errstr, 30);
+	if (!$fp) {
+		echo '<p><img src="./inc/img/zeichen.png" alt=""/> Fehler beim erstellen des <a href="http://is.gd"><u>is.gd</u></a> Links. Nutze normalen Link.<br/></p>';
+		return "error";
+        } else {
+	        $out = "GET /api.php?longurl=$link HTTP/1.1\r\n";
+       		$out .= "Host: www.is.gd\r\n";
+        	$out .= "Connection: Close\r\n\r\n";
+        	fwrite($fp, $out);
+		
+		while (!feof($fp)) {
+ 	       		return substr(strstr(fread($fp, 300), 'http://'), 0, -5);
+        	}
+		fclose($fp);
+	}
+}
 ?>
