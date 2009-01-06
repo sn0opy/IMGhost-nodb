@@ -1,5 +1,4 @@
 <?
-error_reporting(0);
 $globvar = array();
 $globvar['title'] = 'IMGhost'; 
 $globvar['2ndtitle'] = 'Host you images';
@@ -13,6 +12,7 @@ $globvar['visiblecopyright'] = '<a href="http://www.somegas.de">Sascha Ohms</a>'
 $globvar['language'] = 'DE';
 $globvar['metadescription'] = 'Ein kostenloser Image-Hoster. Zeige deine Bilder, Freunden, in Foren oder irgendwo im Internet.';
 $globvar['use_randomname'] = true; // Zufallsname oder alten Dateinamen übernehmen
+$globvar['twitter'] = true; // schaltet die Ausgabe des Twitterlinks an / aus
 
 ob_start();
 include('tpl/header.tpl.php');
@@ -120,12 +120,13 @@ if(isset($_GET['s'])) {
 			else
 				$serverurl = $_SERVER['HTTP_HOST'].dirname($_SERVER['REQUEST_URI'])."/";
 			
-			$isgdlink = isgd('http://' .$serverurl. 'i/' .$name);
-			if($isgdlink != "error")
-				$twitterausgabe = 'http://twitter.com/home?status=' .$isgdlink. ' - ' .$thename;
-			else
-				$twitterausgabe = 'http://twitter.com/home/?status=http://' .$serverurl. 'i/' .$name;
-
+			if($globvar['twitter'] == true) {
+				$isgdlink = isgd('http://' .$serverurl. 'i/' .$name);
+				if($isgdlink != "error")
+					$twitterausgabe = 'http://twitter.com/home?status=' .$isgdlink. ' - ' .$thename;
+				else
+					$twitterausgabe = 'http://twitter.com/home/?status=http://' .$serverurl. 'i/' .$name;
+			}
 				
 			$htmlcodeausgabe = '<img src="http://' .$serverurl. 'i/' .$name. '" alt="" />';
 			$bbcodeausgabe = '[img]http://' .$serverurl. 'i/' .$name. '[/img]';

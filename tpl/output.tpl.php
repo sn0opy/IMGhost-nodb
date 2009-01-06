@@ -42,9 +42,11 @@
 		<td>Clickcounter: </td>
 		<td><input type='text' value='<?=$fullausgabeclick?>' size='70' onClick="this.select();" /></td>
 	</tr>
+<?if($globvar['twitter']):?>
 	<tr>
 		<td>Twittern: </td>
 		<td><a href="<?=$twitterausgabe?>">Hier klicken (twitter.com)</a></td>
 	</tr>
+<?endif;?>
 </table>
 
