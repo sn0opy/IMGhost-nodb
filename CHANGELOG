@@ -1,5 +1,10 @@
-﻿06.01.2009 Sascha Ohms
+﻿19.01.2009 Sascha Ohms
+	* Bug ausgebessert, welcher vollen Pfad zum Script anzeigte, wenn eine als Bild getarnte Datei
+	  hochgeladen wurde. Dank an tuqs <tuqs@core.ws>
+
+06.01.2009 Sascha Ohms
 	* Möglichkeit Twitter-Link auszuschalten eingebaut
+
 24.12.2008 Sascha Ohms
 	* Twitter Support integriert
 	* HTML Comment bischen verschönert
@@ -15,7 +20,6 @@
 25.08.2008 mit der Hilfe von Jörg Napp <www.joergnapp.de>
 	* Uploadmöglichkeit von PHP und anderen Dateien unterbunden
 	* Unerlaubte Erstellung von Clickfiles unterbunden
-
 
 18.08.2008 Sascha Bartuweit <ir0n1e@freenet.de>
 	* 16:9 prüfung eingefügt 

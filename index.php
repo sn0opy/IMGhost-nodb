@@ -82,8 +82,8 @@ if(isset($_GET['s'])) {
 				$typeausgabe = '.gif';
 			} else {
 				print '<p><img src="inc/img/zeichen.png" alt=""/> Dateityp wird nicht unterst&uuml;tzt.</p>';
-				unlink($name);
-				unset($src);
+				@unlink($name);
+				@unset($src);
 				include('tpl/footer.tpl.php');
 				exit;				
 			}
