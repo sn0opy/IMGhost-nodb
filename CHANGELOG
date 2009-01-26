@@ -1,4 +1,11 @@
-﻿19.01.2009 Sascha Ohms
+﻿26.01.2009 Sascha Ohms
+        * Mehr Kommentare eingesetzt
+	* Javascript entfernt
+	* Diversen Überflüssigen Code entfernt
+	* Überflüssige Dateien entfernt
+	* Sichtbares Copyright abgeändert
+
+19.01.2009 Sascha Ohms
 	* Bug ausgebessert, welcher vollen Pfad zum Script anzeigte, wenn eine als Bild getarnte Datei
 	  hochgeladen wurde. Dank an tuqs <tuqs@core.ws>
 

@@ -10,30 +10,6 @@
 	<meta name="content-language" content="<?=$globvar['language']?>" />
 	<meta name="description" content="<?=$globvar['metadescription']?>" />
 	<link rel="stylesheet" href="inc/style.css" type="text/css" media="screen" />
-	
-	<script type="text/javascript" src="inc/mootools.js"></script>
-	<script type="text/javascript">
-	window.addEvent('domready', function(){
-		var mySlide = new Fx.Slide('slideheader', {mode: 'horizontal'});
-		
-		mySlide.hide();
-		mySlide.slideIn();
-		
-		var Tips2 = new Tips($$('.Tips2'), {
-			initialize:function(){
-				this.fx = new Fx.Style(this.toolTip, 'opacity', {duration: 500, wait: false}).set(0);
-			},
-			onShow: function(toolTip) {
-				this.fx.start(1);
-			},
-			onHide: function(toolTip) {
-				this.fx.start(0);
-			}
-		});
-		
-
-	});
-	</script>
 </head>
 <body>
 <div id="container">
