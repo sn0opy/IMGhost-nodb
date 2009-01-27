@@ -90,7 +90,7 @@ if(isset($_GET['s'])) {
 			} else {
 				print '<p><img src="inc/img/zeichen.png" alt=""/> Dateityp wird nicht unterst&uuml;tzt.</p>';
 				@unlink($name); // Wichtig! Falls Dateityp nicht unterstuetzt wird, wird die Datei wieder geloescht
-				@unset($src);
+				unset($src);
 				include('tpl/footer.tpl.php');
 				exit;				
 			}
