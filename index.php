@@ -1,7 +1,7 @@
 <?
 $globvar = array();
 $globvar['title'] = 'IMGhost'; 
-$globvar['2ndtitle'] = 'Host you images';
+$globvar['2ndtitle'] = 'Host your images';
 $globvar['imagesupport'] = 'jpg, png, gif'; // eigentlich schwachsinnig :p
 $globvar['maxsize'] = '1536'; // Angabe in Kilobyte
 $globvar['thumbwidth43'] = 180;  	// neu resize 
@@ -135,9 +135,9 @@ if(isset($_GET['s'])) {
 			if($globvar['twitter'] == true) {
 				$isgdlink = isgd('http://' .$serverurl. 'i/' .$name);
 				if($isgdlink != "error")
-					$twitterausgabe = 'http://twitter.com/home?status=' .$isgdlink. ' - ' .$thename;
+					$twitterausgabe = 'http://twitter.com/timeline/?status=' .$isgdlink. ' - ' .$thename;
 				else
-					$twitterausgabe = 'http://twitter.com/home/?status=http://' .$serverurl. 'i/' .$name;
+					$twitterausgabe = 'http://twitter.com/timeline/?status=http://' .$serverurl. 'i/' .$name;
 			}
 			
 			// Ausgabe Links definieren
