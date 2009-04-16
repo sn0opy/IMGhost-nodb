@@ -163,7 +163,7 @@ function is_valid_filename($filename, $extensions=array('jpg', 'jpeg', 'gif', 'p
 
 // Funktion fuer den API Call von is.gd
 function isgd($link) {
-        $fp = fsockopen("www.is.gd", 80, $errno, $errstr, 30);
+        $fp = @fsockopen("www.is.gd", 80, $errno, $errstr, 30);
 	if (!$fp) {
 		echo '<p><img src="./inc/img/zeichen.png" alt=""/> Fehler beim erstellen des <a href="http://is.gd"><u>is.gd</u></a> Links. Nutze normalen Link.<br/></p>';
 		return "error";

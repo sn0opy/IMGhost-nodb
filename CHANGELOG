@@ -1,9 +1,15 @@
-﻿26.01.2009 Sascha Ohms
+﻿16.04.2009 Sascha Ohms
+	* kleinen Fehler ausgebesert, der vollen Pfad anzeigte, wenn is.gd down ist
+
+01.04.2009 Sascha Ohms
+	* Twitterlink hat sich geÃ€ndert
+	
+26.01.2009 Sascha Ohms
         * Mehr Kommentare eingesetzt
 	* Javascript entfernt
-	* Diversen Überflüssigen Code entfernt
-	* Überflüssige Dateien entfernt
-	* Sichtbares Copyright abgeändert
+	* Diversen ÃŒberfÃŒüssigen Code entfernt
+	* ÃŒberfÃŒüssige Dateien entfernt
+		* Sichtbares Copyright abgeÃŒndert
 
 19.01.2009 Sascha Ohms
 	* Bug ausgebessert, welcher vollen Pfad zum Script anzeigte, wenn eine als Bild getarnte Datei
