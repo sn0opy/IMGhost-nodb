@@ -13,6 +13,7 @@ $globvar['language'] = 'DE';
 $globvar['metadescription'] = 'Ein kostenloser Image-Hoster. Zeige deine Bilder, Freunden, in Foren oder irgendwo im Internet.';
 $globvar['use_randomname'] = true; // Zufallsname oder alten Dateinamen übernehmen
 $globvar['twitter'] = true; // schaltet die Ausgabe des Twitterlinks an / aus
+$globvar['showformafterup'] = true; // Option um das Uploadformular nach dem Upload auszublenden
 
 ob_start();
 include('tpl/header.tpl.php');
@@ -44,9 +45,18 @@ if(isset($_GET['s'])) {
 		include('tpl/einzel.tpl.php');
 	}		
 } else {
-	include('tpl/index.tpl.php');
+
+	if(isset($_POST['nsubmit'])) { 
+		if($globvar['showformafterup']) 
+			include('tpl/index.tpl.php');
 		
-	if(isset($_POST['nsubmit'])) {
+		$submitted = true;
+	} else {
+		include('tpl/index.tpl.php');
+		$submitted = false;	
+	}		
+
+	if($submitted) {
 		$tempname = $_FILES['nfile']['tmp_name']; 
 		$type = $_FILES['nfile']['type'];		
 		$thename = $_FILES['nfile']['name'];
