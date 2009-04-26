@@ -83,7 +83,7 @@ if(isset($_GET['s'])) {
 			
 			// Datei wird verschoben
 			move_uploaded_file($tempname, './i/' .$name);
-			$imginfo = getimagesize('./i/' .$name); // Wichtige Abfrage fuer Bildtyp und Seitenverhaeltnisse
+			$imginfo = @getimagesize('./i/' .$name); // Wichtige Abfrage fuer Bildtyp und Seitenverhaeltnisse
 			$height = $imginfo[1];
 			$width = $imginfo[0];
 			
