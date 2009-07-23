@@ -2,7 +2,6 @@
 $globvar = array();
 $globvar['title'] = 'IMGhost'; 
 $globvar['2ndtitle'] = 'Host your images';
-$globvar['imagesupport'] = 'jpg, png, gif'; // eigentlich schwachsinnig :p
 $globvar['maxsize'] = '1536'; // Angabe in Kilobyte
 $globvar['thumbwidth43'] = 180;  	// neu resize 
 $globvar['thumbheight43'] = 135; 	// für 16/9/
@@ -14,6 +13,7 @@ $globvar['metadescription'] = 'Ein kostenloser Image-Hoster. Zeige deine Bilder,
 $globvar['use_randomname'] = true; // Zufallsname oder alten Dateinamen übernehmen
 $globvar['twitter'] = true; // schaltet die Ausgabe des Twitterlinks an / aus
 $globvar['showformafterup'] = true; // Option um das Uploadformular nach dem Upload auszublenden
+$globvar['validimages'] = array(".jpg", ".gif", ".png"); // Valide bildformate hier eintragen
 
 ob_start();
 include('tpl/header.tpl.php');
@@ -73,8 +73,11 @@ if(isset($_GET['s'])) {
 		$size = $_FILES['nfile']['size']; 
 		$size = round($size / 1024, 2);
 		
-		// Abfrage ob Bild die maximale groesse ueberschreitet
-		if($size > $globvar['maxsize']) {
+		// Weitere pruefung, ob Bild auch wirklich ein Bild ist
+		if(!in_array($endung, $globvar['validimages'])) {
+			echo '<p><img src="./inc/img/zeichen.png" alt="" \> Invalides Bildformat</p>';
+		// Abfrage, ob Bild  die maximale groesse ueberschritten hat
+		} else if($size > $globvar['maxsize']) {
 			echo '<p><img src="./inc/img/zeichen.png" alt=""/> Das Bild ist gr&ouml;&szlig;er als ' .$globvar['maxsize']. ' kb</p>';
 		} else {	
 			$thumbdir = './i/t/';						

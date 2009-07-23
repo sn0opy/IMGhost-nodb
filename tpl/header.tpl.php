@@ -4,11 +4,6 @@
 <head>
 	<title><?=$globvar['title']?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="robots" content="index,follow" />
-	<meta name="revisit-after" content="3 days" />
-	<meta name="language" content="<?=$globvar['language']?>" />
-	<meta name="content-language" content="<?=$globvar['language']?>" />
-	<meta name="description" content="<?=$globvar['metadescription']?>" />
 	<link rel="stylesheet" href="inc/style.css" type="text/css" media="screen" />
 </head>
 <body>
