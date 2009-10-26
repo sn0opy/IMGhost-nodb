@@ -1,4 +1,4 @@
-<?
+<?php
 $globvar = array();
 $globvar['title'] = 'IMGhost'; 
 $globvar['2ndtitle'] = 'Host your images';
@@ -14,6 +14,8 @@ $globvar['use_randomname'] = true; // Zufallsname oder alten Dateinamen übernehm
 $globvar['twitter'] = true; // schaltet die Ausgabe des Twitterlinks an / aus
 $globvar['showformafterup'] = true; // Option um das Uploadformular nach dem Upload auszublenden
 $globvar['validimages'] = array(".jpg", ".gif", ".png"); // Valide bildformate hier eintragen
+$globvar['needpassword'] = false; // Zum Hochladen wird ein Passwort benoetigt
+$globvar['password'] = "";
 
 ob_start();
 include('tpl/header.tpl.php');
@@ -45,13 +47,22 @@ if(isset($_GET['s'])) {
 		include('tpl/einzel.tpl.php');
 	}		
 } else {
-
 	if(isset($_POST['nsubmit'])) { 
-		if($globvar['showformafterup']) 
+		if($globvar['showformafterup']) {
 			include('tpl/index.tpl.php');
-		
-		$submitted = true;
-	} else {
+		}
+					
+		if($globvar['needpassword'])  {
+			if($_POST['password'] != $globvar['password']) {
+				echo '<p><img src="./inc/img/zeichen.png" alt="" \> Falsches Passwort</p>';
+				exit;
+			}
+		}				
+			
+		$submitted = true;			
+	} 
+
+	if(!isset($submitted)){
 		include('tpl/index.tpl.php');
 		$submitted = false;	
 	}		
@@ -193,3 +204,4 @@ function isgd($link) {
 	}
 }
 ?>
+
