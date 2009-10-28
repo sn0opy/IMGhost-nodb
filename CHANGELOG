@@ -1,4 +1,10 @@
-﻿16.04.2009 Sascha Ohms
+﻿28.10.2009 Sascha Ohms
+	* 2 weitere Thumb-Modi hinzugefügt (Höhe+Breite nach Prozent; Fixed width mit dynamischer Höhe)
+
+26.10.2009 Sascha Ohms
+	* Option hinzugefügt ein Passwort beim Upload zu erzwingen
+
+16.04.2009 Sascha Ohms
 	* kleinen Fehler ausgebesert, der vollen Pfad anzeigte, wenn is.gd down ist
 
 01.04.2009 Sascha Ohms
@@ -7,8 +13,8 @@
 26.01.2009 Sascha Ohms
         * Mehr Kommentare eingesetzt
 	* Javascript entfernt
-	* Diversen ÃŒberfÃŒüssigen Code entfernt
-	* ÃŒberfÃŒüssige Dateien entfernt
+	* Diversen Überflüssigen Code entfernt
+	* Überflüssige Dateien entfernt
 		* Sichtbares Copyright abgeÃŒndert
 
 19.01.2009 Sascha Ohms
