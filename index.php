@@ -1,4 +1,5 @@
-<?
+<?php
+
 $globvar = array();
 $globvar['title'] = 'IMGhost'; 
 $globvar['2ndtitle'] = 'Host your images';
